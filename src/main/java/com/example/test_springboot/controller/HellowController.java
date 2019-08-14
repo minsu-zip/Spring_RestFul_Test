@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HellowController {
     @RequestMapping(value = "/resthellow")
     public String hellow() {
-        return "welcome to minsu World !! ";
+        return "welcome to MIN World !! ";
     }
 }
