@@ -1,7 +1,6 @@
 package com.example.test_springboot.controller;
 
-import com.example.test_springboot.Service.OrganizationService;
-
+import com.example.test_springboot.Service.conserive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,14 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-
-public class RestWSController{
+public class RestWSController1{
     @Autowired
-    OrganizationService organizationService;
-    @RequestMapping(value = "/ws/organization")
+    conserive con;
+    @RequestMapping(value = "/ws/organizationList")
     public Object actionMethod(){
       Object resultObject = new Object();
-	resultObject = organizationService.actionMethod();
+      resultObject = con.actionMethod();
       return resultObject;
     }
 }

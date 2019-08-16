@@ -14,31 +14,27 @@
 
 
     <script>
-        $.get("http://localhost:8080/ws/organization", function (data) {
-            $.map(data, function (key, value) {
-                $("tbody").append("<tr><td>" + value + '</td><td>' + key + "</td></tr>");
-
-            });
+        $.ajax({
+            type: "POST",
+            //contentType: "application/json",
+            url: "http://localhost:8080/api/ajax",
+            data: {
+                title: "Donald Duck", description: "Duckburg"
+            },
+            //dataType: "json",
+            success: function (data, status) {
+                //alert("Data: " + data + "\nStatus: " + status);
+                for(var key in data){
+                    $("#demo").append(key+": "+data[key]+"<br>");
+                }
+            }
         });
     </script>
 
 </head>
 
 <body>
-
-    <table class="table" style= "width: 50%">
-        <thead>
-            <tr>
-                <th>KEY</th>
-                <th>VALUE</th>
-            </tr>
-
-            <tbody>
-
-            </tbody>
-
-        </thead>
-    </table>
+    <p id="demo"></p>
 </body>
 
 </html>
