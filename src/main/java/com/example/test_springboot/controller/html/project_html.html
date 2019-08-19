@@ -16,17 +16,22 @@
     <script>
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080/remote/openweather",
+            url: "http://localhost:8080/remote/project",
             data: {
             },
             success: function (data, status) {
-                //alert("Data: " + data + "\nStatus: " + status);
-                //Map<String, Object> resultObject = new HashMap<String, Object>();
-                for(var key in data){
-                    //if(key typeof "Map")
-                    //$("#demo").append(key+": "+data[key]+"<br>");
-                }
-               // Map<String, Object> resultObject = new HashMap<String, Object>();
+                $("#demo").append("나라 : "+(data.sys.country)+"</br>");
+                $("#demo").append("도시이름 : "+(data.name)+"</br>");
+                $("#demo").append("현재온도 : "+((data.main.temp)-273.15)+"</br>");
+                $("#demo").append("현재습도 : "+(data.main.humidity)+"</br>");
+                $("#demo").append("날씨 : "+(data.weather[0].main)+"</br>");
+                $("#demo").append("상세날씨설명 : "+(data.weather[0].description)+"</br>");
+                
+                var imgurl = "http://openweathermap.org/img/w/"+data.weather[0].icon+".png";
+                $("#img").attr("src", imgurl);
+
+                
+
             }
         });
     </script>
@@ -35,6 +40,7 @@
 
 <body>
     <p id="demo"></p>
+    <img id="img" src="">
 </body>
 
 </html>
