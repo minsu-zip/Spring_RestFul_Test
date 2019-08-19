@@ -19,35 +19,37 @@
             url: "http://localhost:8080/remote/twoproject2",
             data: {
             },
+
             success: function (data) {
                 var wf = "";
-                //wf += "<h2>"+data.city.name+"</h2>";
-                
-                var wf2 = "";
+                wf += "<h2>도시: " + data.city.name + "</h2>";
 
-                $.each(data.list, function(index, val){
-                
+                var wf2 = "";
+                wf2 += "<h2>도시: " + data.city.name + "</h2>";
+
+                $.each(data.list, function (index, val) {
+
                     var str = val.dt_txt.split(" ");
 
-                    if(str[0] == ("2017-02-17")){
-                    wf +=str[1];
-                    wf += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>";
-                    wf += ((val.main.temp)-273.15).toFixed(1)+"'c ";
-                    wf += val.wind.speed+("m/s <br>"); 
+                    if (str[0] == ("2017-02-17")) {
+                        wf += str[1];
+                        wf += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>";
+                        wf += ((val.main.temp) - 273.15).toFixed(1) + "'c ";
+                        wf += val.wind.speed + ("m/s <br>");
                     }
-                   
+
                     var str2 = val.dt_txt.split(" ");
 
-                    if(str[1] == "12:00:00"){
-                    wf2 +=str[0];
-                    wf2 += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>";
-                    wf2 += ((val.main.temp)-273.15).toFixed(1)+"'c ";
-                    wf2 += val.wind.speed+("m/s <br>"); 
+                    if (str[1] == "12:00:00") {
+                        wf2 += str[0];
+                        wf2 += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>";
+                        wf2 += ((val.main.temp) - 273.15).toFixed(1) + "'c ";
+                        wf2 += val.wind.speed + ("m/s <br>");
                     }
-                   
-               });
-               $("#demo").append(wf);
-               $("#demo2").append(wf2);
+
+                });
+                $("#demo").append(wf);
+                $("#demo2").append(wf2);
             }
         });
     </script>
@@ -56,10 +58,10 @@
 
 <body>
     <div>
-            <p id="demo"></p>
+        <p id="demo"></p>
     </div>
     <p id="demo2"></p>
-    
+
 </body>
 
 </html>
